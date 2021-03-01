@@ -19,9 +19,7 @@ namespace ThemesApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddOpenApiDocument();
-
             services.AddSwaggerDocument();
         }
 
@@ -47,7 +45,6 @@ namespace ThemesApi
             });
 
             app.UseOpenApi();
-
             app.UseSwaggerUi3();
         }
     }
