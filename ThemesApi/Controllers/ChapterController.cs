@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using ThemesApi.DTOs;
 using ThemesApi.Models;
 
 namespace ThemesApi.Controllers
@@ -113,5 +114,30 @@ namespace ThemesApi.Controllers
             _chapterRepository.SaveChanges();
             return NoContent();
         }
+
+
+        // POST: api/chapters
+        /// <summary>
+        /// Adds a new chapter
+        /// </summary>
+        /// <param name="chapter">the new chapter</param>
+        [HttpPost]
+        public ActionResult<Priority> PostChapter(ChapterDTO chapter)
+        {
+
+            Priority priority = _chapterRepository.getPriorityById(chapter.Priority.Id);
+            Theme theme = _chapterRepository.getThemeById(chapter.Theme.Id);
+
+            Chapter newChapter = new Chapter() {
+                Title = chapter.Title,
+                Priority = priority,
+                Theme = theme,
+            };
+            _chapterRepository.Add(newChapter);
+            _chapterRepository.SaveChanges();
+
+            return CreatedAtAction(nameof(GetAllChaptersByThemeOrPriority), new { id = newChapter.Id }, newChapter);
+        }
+
     }
 }

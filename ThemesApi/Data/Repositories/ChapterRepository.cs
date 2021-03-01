@@ -60,5 +60,15 @@ namespace ThemesApi.Data.Repositories
         {
             _context.Chapters.Add(chapter);
         }
+
+        public Priority getPriorityById(int id)
+        {
+            return _context.Priorities.Where(e => e.Id == id).FirstOrDefault();
+        }
+
+        public Theme getThemeById(int id)
+        {
+            return _context.Themes.Where(e => e.Id == id).FirstOrDefault();
+        }
     }
 }

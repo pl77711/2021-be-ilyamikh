@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using ThemesApi.Models;
 
-namespace ThemesApi.Models
+namespace ThemesApi.DTOs
 {
-    public class Chapter
+    public class ChapterDTO
     {
-        public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
-        public bool IsFinished { get; set; }
         public Priority? Priority { get; set; }
         public Theme? Theme { get; set; }
         public DateTime? Date { get; set; }
 
-        public Chapter() {
-            IsFinished = false;
-            Date = DateTime.Now;
+        public ChapterDTO() {
+            
         }
     }
 }

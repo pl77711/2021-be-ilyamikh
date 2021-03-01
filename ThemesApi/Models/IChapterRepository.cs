@@ -14,6 +14,10 @@ namespace ThemesApi.Models
         public IEnumerable<Chapter> GetAllChaptersByTheme(int themeId);
         public void Delete(Chapter chapter);
         public void Update(Chapter chapter);
+
+        public Priority getPriorityById(int id);
+        public Theme getThemeById(int id);
+
         public void Add(Chapter chapter);
         public void SaveChanges();
 

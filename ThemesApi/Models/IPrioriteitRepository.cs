@@ -8,7 +8,7 @@ namespace ThemesApi.Models
     public interface IPrioriteitRepository
     {
         public IEnumerable<Priority> GetAllPriorities();
-        public Priority GetPrioriry(int id);
+        public Priority GetPriority(int id);
         public void Delete(Priority priority);
         public void Update(Priority priority);
         public void SaveChanges();

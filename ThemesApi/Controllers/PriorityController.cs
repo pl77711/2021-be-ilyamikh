@@ -30,6 +30,19 @@ namespace ThemesApi.Controllers
             return _priorityRepository.GetAllPriorities();
         }
 
+
+        // GET: api/priority/2
+        /// <summary>
+        /// Get priority by id
+        /// </summary>
+        /// <param name="id">the id of the priority</param>
+        /// <returns>The priority</returns>
+        [HttpGet("{id}")]
+        public ActionResult<Priority> GetPriority(int id)
+        {
+            return _priorityRepository.GetPriority(id);
+        }
+
         // DELETE: api/priorities/5
         /// <summary>
         /// Deletes a recipe
@@ -38,7 +51,7 @@ namespace ThemesApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeletePriority(int id)
         {
-            Priority priority = _priorityRepository.GetPrioriry(id);
+            Priority priority = _priorityRepository.GetPriority(id);
             if (priority == null)
             {
                 return NotFound();
@@ -73,7 +86,7 @@ namespace ThemesApi.Controllers
         /// </summary>
         /// <param name="priority">the new priority</param>
         [HttpPost]
-        public ActionResult<Priority> PostRecipe(PriorityDTO priority)
+        public ActionResult<Priority> PostPriority(PriorityDTO priority)
         {
             Priority newPriority = new Priority() { Title = priority.Title, Color = priority.Color };
             _priorityRepository.Add(newPriority);

@@ -30,7 +30,7 @@ namespace ThemesApi.Data.Repositories
             return _context.Priorities;
         }
 
-        public Priority GetPrioriry(int id)
+        public Priority GetPriority(int id)
         {
             return _context.Priorities.Where(e => e.Id == id).SingleOrDefault();
         }

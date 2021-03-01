@@ -32,6 +32,18 @@ namespace ThemesApi.Controllers
             return _themeRepository.GetAllThemes();
         }
 
+        // GET: api/Themes/2
+        /// <summary>
+        /// Get theme by id
+        /// </summary>
+        /// <param name="id">the id of the theme</param>
+        /// <returns>The theme</returns>
+        [HttpGet("{id}")]
+        public ActionResult<Theme> GetTheme(int id)
+        {
+            return _themeRepository.GetTheme(id);
+        }
+
 
 
         // Delete: api/DeleteTheme  
