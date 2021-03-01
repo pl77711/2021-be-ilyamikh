@@ -6,46 +6,25 @@ namespace ThemesApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ThemesController : ControllerBase
+    public class ChapterController : ControllerBase
     {
         private readonly IChapterRepository _chapterRepository;
 
-        public ThemesController(IChapterRepository context)
+        public ChapterController(IChapterRepository context)
         {
             _chapterRepository = context;
-        }
-
-        // GET: api/Themes
-        /// <summary>
-        /// Get all themes
-        /// </summary>
-        /// <returns>array of themes</returns>
-        [HttpGet("/themes")]
-        public IEnumerable<Theme> GetAllThemes() {
-            return _chapterRepository.GetAllThemes();
-        }
-
-        // GET: api/Priorities
-        /// <summary>
-        /// Get all priorities
-        /// </summary>
-        /// <returns>array of priorities</returns>
-        [HttpGet("/priorities")]
-        public IEnumerable<Priority> GetAllPriorities()
-        {
-            return _chapterRepository.GetAllPriorities();
-        }
+        }     
 
         // GET: api/Chapter/2
         /// <summary>
         /// Get the chapter by id
         /// </summary>
-        /// <param name="chapterId">the id of the chapter</param>
+        /// <param name="id">the id of the chapter</param>
         /// <returns>The chapter</returns>
-        [HttpGet("/chapters/{chapterId}")]
-        public ActionResult<Chapter> GetChapterById(int chapterId)
+        [HttpGet("{id}")]
+        public ActionResult<Chapter> GetChapterById(int id)
         {
-            return _chapterRepository.GetChapterById(chapterId);
+            return _chapterRepository.GetChapterById(id);
         }
 
         // GET: api/Chapters
@@ -55,7 +34,7 @@ namespace ThemesApi.Controllers
         /// <param name="themeId">the id of the Theme</param>
         /// <param name="prioId">the id of the Theme</param>
         /// <returns>array of chapters by theme or priority or apply or filter by priority AND theme, if no parameters provided returns list of all chapters</returns>
-        [HttpGet("/chapters")]
+        [HttpGet]
         public IEnumerable<Chapter> GetAllChaptersByThemeOrPriority(int? themeId, int? prioId)
         {                
             if (themeId.HasValue && prioId.HasValue) 
@@ -68,7 +47,7 @@ namespace ThemesApi.Controllers
                 return _chapterRepository.GetAllChapters();
 
         }
-
+        /*
         // GET: api/Chapters
         /// <summary>
         /// Get all chapters by priority 
@@ -95,14 +74,14 @@ namespace ThemesApi.Controllers
             else return _chapterRepository.GetAllChapters();
 
         }
-
+        */
         // Delete: api/DeleteChapter    
         /// <summary>
         /// Put Chapter
         /// </summary>
         /// <param name="id">the id of the chapter</param>
         /// <returns>No content</returns>
-        [HttpDelete("/chapter/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteChapter(int id)
         {
             Chapter chapter = _chapterRepository.GetChapterById(id);
@@ -111,6 +90,26 @@ namespace ThemesApi.Controllers
                 return NotFound();
             }
             _chapterRepository.Delete(chapter);
+            _chapterRepository.SaveChanges();
+            return NoContent();
+        }
+
+
+
+        // PUT: api/chapters/2
+        /// <summary>
+        /// Modifies a chapter
+        /// </summary>
+        /// <param name="id">id of the chapter to be modified</param>
+        /// <param name="chapter">the modified chapter</param>
+        [HttpPut("{id}")]
+        public IActionResult PutChapter(int id, Chapter chapter)
+        {
+            if (id != chapter.Id)
+            {
+                return BadRequest();
+            }
+            _chapterRepository.Update(chapter);
             _chapterRepository.SaveChanges();
             return NoContent();
         }

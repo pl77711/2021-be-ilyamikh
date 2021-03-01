@@ -9,7 +9,9 @@ namespace ThemesApi.Models
     {
         public IEnumerable<Priority> GetAllPriorities();
         public Priority GetPrioriry(int id);
-        public void DeletePriority(Priority priority);
-        public void UpdatePrioroty(Priority priority);
+        public void Delete(Priority priority);
+        public void Update(Priority priority);
+        public void SaveChanges();
+        public void Add(Priority priority);
     }
 }

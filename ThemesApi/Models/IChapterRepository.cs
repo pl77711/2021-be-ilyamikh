@@ -13,6 +13,8 @@ namespace ThemesApi.Models
         public IEnumerable<Chapter> GetAllChaptersByPriority(int prioId);
         public IEnumerable<Chapter> GetAllChaptersByTheme(int themeId);
         public void Delete(Chapter chapter);
+        public void Update(Chapter chapter);
+        public void Add(Chapter chapter);
         public void SaveChanges();
 
     }

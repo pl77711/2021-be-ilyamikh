@@ -50,5 +50,15 @@ namespace ThemesApi.Data.Repositories
         {
             _context.SaveChanges();
         }
+
+        public void Update(Chapter chapter)
+        {
+            _context.Chapters.Update(chapter);
+        }
+
+        public void Add(Chapter chapter)
+        {
+            _context.Chapters.Add(chapter);
+        }
     }
 }

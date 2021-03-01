@@ -15,24 +15,34 @@ namespace ThemesApi.Data.Repositories
             _context = dbContext;
         }
 
-        public void DeletePriority(Priority priority)
+        public void Add(Priority priority)
         {
-            throw new NotImplementedException();
+            _context.Priorities.Add(priority);
+        }
+
+        public void Delete(Priority priority)
+        {
+            _context.Priorities.Remove(priority);
         }
 
         public IEnumerable<Priority> GetAllPriorities()
         {
-            throw new NotImplementedException();
+            return _context.Priorities;
         }
 
         public Priority GetPrioriry(int id)
         {
-            throw new NotImplementedException();
+            return _context.Priorities.Where(e => e.Id == id).SingleOrDefault();
         }
 
-        public void UpdatePrioroty(Priority priority)
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
+        }
+
+        public void Update(Priority priority)
+        {
+            _context.Update(priority);
         }
     }
 }

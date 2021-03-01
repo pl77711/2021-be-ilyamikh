@@ -27,6 +27,9 @@ namespace ThemesApi
 
             services.AddScoped<ApplicationDataInitializer>();
             services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<IPrioriteitRepository, PriorityRepository>();
+            services.AddScoped<IThemeRepository, ThemeRepository>();
+
             // Register the Swagger services
             services.AddOpenApiDocument(c =>
             {
@@ -37,6 +40,7 @@ namespace ThemesApi
             }); 
 
             services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
