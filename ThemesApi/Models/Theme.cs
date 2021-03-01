@@ -3,12 +3,12 @@
     public class Theme
     {
         public int Id { get; set; }
-        public string Titel { get; set; }
+        public string Title { get; set; }
 
-        public Theme(int id, string titel)
+        public Theme(int id, string title)
         {
             this.Id = id;
-            this.Titel = titel;
+            this.Title = title;
         }
     }
 }
