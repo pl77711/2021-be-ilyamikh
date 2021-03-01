@@ -23,10 +23,10 @@ namespace ThemesApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ThemeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ThemeContext")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ThemeContext")));
 
-            services.AddScoped<ThemeDataInitializer>();
-            services.AddScoped<IThemeRepository, ThemeRepository>();
+            services.AddScoped<ApplicationDataInitializer>();
+            services.AddScoped<IChapterRepository, ChapterRepository>();
             // Register the Swagger services
             services.AddOpenApiDocument(c =>
             {
@@ -40,7 +40,7 @@ namespace ThemesApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ThemeDataInitializer themeDataInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDataInitializer themeDataInitializer)
         {
             if (env.IsDevelopment())
             {
