@@ -13,6 +13,7 @@ namespace ThemesApi.DTOs
         public string Title { get; set; }
         public Priority? Priority { get; set; }
         public Theme? Theme { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
 
         public ChapterDTO() {

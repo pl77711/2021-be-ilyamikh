@@ -12,12 +12,12 @@ namespace ThemesApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ThemeController : Controller
+    public class ThemesController : Controller
     {
 
         private readonly IThemeRepository _themeRepository;
 
-        public ThemeController(IThemeRepository context)
+        public ThemesController(IThemeRepository context)
         {
             _themeRepository = context;
         }

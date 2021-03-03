@@ -9,11 +9,11 @@ namespace ThemesApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ChapterController : ControllerBase
+    public class ChaptersController : ControllerBase
     {
         private readonly IChapterRepository _chapterRepository;
 
-        public ChapterController(IChapterRepository context)
+        public ChaptersController(IChapterRepository context)
         {
             _chapterRepository = context;
         }     

@@ -12,11 +12,11 @@ namespace ThemesApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class PriorityController : Controller
+    public class PrioritiesController : Controller
     {
         private readonly IPrioriteitRepository _priorityRepository;
 
-        public PriorityController(IPrioriteitRepository context)
+        public PrioritiesController(IPrioriteitRepository context)
         {
             _priorityRepository = context;
         }

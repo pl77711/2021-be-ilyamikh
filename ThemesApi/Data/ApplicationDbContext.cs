@@ -15,6 +15,8 @@ namespace ThemesApi.Data
             base.OnModelCreating(builder);
             //builder.Entity<Chapter>().HasOne(e => e.Priority).WithMany().IsRequired(false).HasForeignKey("PriorityId");
             //builder.Entity<Chapter>().HasOne(e => e.Theme).WithOne().IsRequired(false).HasForeignKey("ThemeId");
+            builder.Entity<Chapter>().HasOne(e => e.Priority).WithMany().OnDelete(DeleteBehavior.SetNull);
+            builder.Entity<Chapter>().HasOne(e => e.Theme).WithMany().OnDelete(DeleteBehavior.SetNull);
         }
 
         public DbSet<Theme> Themes { get; set; }
