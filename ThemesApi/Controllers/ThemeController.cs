@@ -8,6 +8,8 @@ using ThemesApi.Models;
 
 namespace ThemesApi.Controllers
 {
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ThemeController : Controller
@@ -21,7 +23,7 @@ namespace ThemesApi.Controllers
         }
 
 
-        // GET: api/Themes
+        // GET: api/Theme
         /// <summary>
         /// Get all themes
         /// </summary>
@@ -32,7 +34,7 @@ namespace ThemesApi.Controllers
             return _themeRepository.GetAllThemes();
         }
 
-        // GET: api/Themes/2
+        // GET: api/Theme/2
         /// <summary>
         /// Get theme by id
         /// </summary>
@@ -46,7 +48,7 @@ namespace ThemesApi.Controllers
 
 
 
-        // Delete: api/DeleteTheme  
+        // Delete: api/Theme/2  
         /// <summary>
         /// Put Theme
         /// </summary>
@@ -66,7 +68,7 @@ namespace ThemesApi.Controllers
         }
 
 
-        // PUT: api/themes/2
+        // PUT: api/Theme/2
         /// <summary>
         /// Modifies a theme
         /// </summary>
@@ -85,10 +87,10 @@ namespace ThemesApi.Controllers
         }
 
 
-        // POST: api/Themes
+        // POST: api/Theme
         /// <summary>
         /// Adds a new theme
-        /// </summary>
+        /// </summary>  
         /// <param name="theme">the new recipe</param>
         [HttpPost]
         public ActionResult<Theme> PostTheme(ThemeDTO theme)

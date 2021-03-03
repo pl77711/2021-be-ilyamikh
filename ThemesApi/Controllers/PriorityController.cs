@@ -8,6 +8,8 @@ using ThemesApi.Models;
 
 namespace ThemesApi.Controllers
 {
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class PriorityController : Controller
@@ -19,7 +21,7 @@ namespace ThemesApi.Controllers
             _priorityRepository = context;
         }
 
-        // GET: api/Priorities
+        // GET: api/Priority
         /// <summary>
         /// Get all priorities
         /// </summary>
@@ -31,7 +33,7 @@ namespace ThemesApi.Controllers
         }
 
 
-        // GET: api/priority/2
+        // GET: api/Priority/2
         /// <summary>
         /// Get priority by id
         /// </summary>
@@ -43,7 +45,7 @@ namespace ThemesApi.Controllers
             return _priorityRepository.GetPriority(id);
         }
 
-        // DELETE: api/priorities/5
+        // DELETE: api/Priority/5
         /// <summary>
         /// Deletes a recipe
         /// </summary>
@@ -61,7 +63,7 @@ namespace ThemesApi.Controllers
             return NoContent();
         }
 
-        // PUT: api/priorities/2
+        // PUT: api/Priority/2
         /// <summary>
         /// Modifies a priority
         /// </summary>
@@ -80,7 +82,7 @@ namespace ThemesApi.Controllers
         }
 
 
-        // POST: api/priorities
+        // POST: api/Priority
         /// <summary>
         /// Adds a new priority
         /// </summary>

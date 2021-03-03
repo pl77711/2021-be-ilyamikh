@@ -5,6 +5,8 @@ using ThemesApi.Models;
 
 namespace ThemesApi.Controllers
 {
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ChapterController : ControllerBase
@@ -28,7 +30,7 @@ namespace ThemesApi.Controllers
             return _chapterRepository.GetChapterById(id);
         }
 
-        // GET: api/Chapters
+        // GET: api/Chapter
         /// <summary>
         /// Get all chapters by theme id or priority id
         /// </summary>
@@ -49,7 +51,7 @@ namespace ThemesApi.Controllers
 
         }
         /*
-        // GET: api/Chapters
+        // GET: api/Chapter
         /// <summary>
         /// Get all chapters by priority 
         /// </summary>
@@ -62,7 +64,7 @@ namespace ThemesApi.Controllers
             else return _chapterRepository.GetAllChapters();
         }
 
-        // GET: api/Chapters
+        // GET: api/Chapter
         /// <summary>
         /// Get all chapters by theme 
         /// </summary>
@@ -76,7 +78,7 @@ namespace ThemesApi.Controllers
 
         }
         */
-        // Delete: api/DeleteChapter    
+        // Delete: api/Chapter/2    
         /// <summary>
         /// Put Chapter
         /// </summary>
@@ -97,7 +99,7 @@ namespace ThemesApi.Controllers
 
 
 
-        // PUT: api/chapters/2
+        // PUT: api/Chapter/2
         /// <summary>
         /// Modifies a chapter
         /// </summary>
@@ -116,7 +118,7 @@ namespace ThemesApi.Controllers
         }
 
 
-        // POST: api/chapters
+        // POST: api/Chapter
         /// <summary>
         /// Adds a new chapter
         /// </summary>

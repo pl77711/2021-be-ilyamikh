@@ -37,7 +37,8 @@ namespace ThemesApi
                 c.Title = "Theme API";
                 c.Version = "v1";
                 c.Description = "The Theme API documentation description.";
-            }); 
+            });
+            services.AddSwaggerDocument();
 
             services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
             services.AddControllersWithViews();
