@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ThemesApi.DTOs;
 using ThemesApi.Models;
 
@@ -12,7 +9,7 @@ namespace ThemesApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ThemesController : Controller
+    public class ThemesController : ControllerBase
     {
 
         private readonly IThemeRepository _themeRepository;
@@ -77,6 +74,7 @@ namespace ThemesApi.Controllers
         [HttpPut("{id}")]
         public IActionResult PutChapter(int id, Theme theme)
         {
+
             if (id != theme.Id)
             {
                 return BadRequest();

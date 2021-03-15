@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ThemesApi.Models
 {
@@ -14,9 +11,9 @@ namespace ThemesApi.Models
         public Theme? Theme { get; set; }
         public DateTime? Date { get; set; }
 
-        public Chapter() {
+        public Chapter()
+        {
             IsFinished = false;
-            Date = DateTime.Now;
         }
     }
 }

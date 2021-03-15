@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ThemesApi.Models;
@@ -54,6 +53,9 @@ namespace ThemesApi.Data.Repositories
         public void Update(Chapter chapter)
         {
             _context.Chapters.Update(chapter);
+            foreach (var reference in _context.Entry(chapter).References)
+                reference.IsModified = true;
+
         }
 
         public void Add(Chapter chapter)

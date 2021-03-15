@@ -16,7 +16,7 @@ namespace ThemesApi.Controllers
         public ChaptersController(IChapterRepository context)
         {
             _chapterRepository = context;
-        }     
+        }
 
         // GET: api/Chapter/2
         /// <summary>
@@ -39,10 +39,10 @@ namespace ThemesApi.Controllers
         /// <returns>array of chapters by theme or priority or apply or filter by priority AND theme, if no parameters provided returns list of all chapters</returns>
         [HttpGet]
         public IEnumerable<Chapter> GetAllChaptersByThemeOrPriority(int? themeId, int? prioId)
-        {                
-            if (themeId.HasValue && prioId.HasValue) 
-                    return _chapterRepository.GetAllChaptersByPriorityAndTheme(themeId.Value, prioId.Value);
-            if (themeId.HasValue && (!prioId.HasValue)) 
+        {
+            if (themeId.HasValue && prioId.HasValue)
+                return _chapterRepository.GetAllChaptersByPriorityAndTheme(themeId.Value, prioId.Value);
+            if (themeId.HasValue && (!prioId.HasValue))
                 return _chapterRepository.GetAllChaptersByTheme(themeId.Value);
             if ((!themeId.HasValue) && prioId.HasValue)
                 return _chapterRepository.GetAllChaptersByPriority(prioId.Value);
@@ -112,6 +112,7 @@ namespace ThemesApi.Controllers
             {
                 return BadRequest();
             }
+
             _chapterRepository.Update(chapter);
             _chapterRepository.SaveChanges();
             return NoContent();
@@ -130,7 +131,8 @@ namespace ThemesApi.Controllers
             Priority priority = _chapterRepository.getPriorityById(chapter.Priority.Id);
             Theme theme = _chapterRepository.getThemeById(chapter.Theme.Id);
 
-            Chapter newChapter = new Chapter() {
+            Chapter newChapter = new Chapter()
+            {
                 Title = chapter.Title,
                 Priority = priority,
                 Theme = theme,

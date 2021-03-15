@@ -14,7 +14,7 @@ namespace ThemesApi.Data
 
         public void InitializeData()
         {
-            _context.Database.EnsureDeleted();
+           // _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
                 Theme onderzoekstechnieken = new Theme { Title = "Onderzoekstechnieken" };

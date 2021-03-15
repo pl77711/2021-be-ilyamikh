@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ThemesApi.DTOs;
 using ThemesApi.Models;
 
@@ -12,7 +9,7 @@ namespace ThemesApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class PrioritiesController : Controller
+    public class PrioritiesController : ControllerBase
     {
         private readonly IPrioriteitRepository _priorityRepository;
 

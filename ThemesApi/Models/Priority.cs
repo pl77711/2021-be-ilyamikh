@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ThemesApi.Models
+﻿namespace ThemesApi.Models
 {
     public class Priority
     {
