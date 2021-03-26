@@ -128,14 +128,17 @@ namespace ThemesApi.Controllers
         public ActionResult<Priority> PostChapter(ChapterDTO chapter)
         {
 
-            Priority priority = _chapterRepository.getPriorityById(chapter.Priority.Id);
-            Theme theme = _chapterRepository.getThemeById(chapter.Theme.Id);
+
+
+            // Priority priority = _chapterRepository.getPriorityById(chapter.Priority.Id);
+            // Theme theme = _chapterRepository.getThemeById(chapter.Theme.Id);
 
             Chapter newChapter = new Chapter()
             {
                 Title = chapter.Title,
-                Priority = priority,
-                Theme = theme,
+                Priority = chapter.Priority == null ? null : _chapterRepository.getPriorityById(chapter.Priority.Id),
+                Theme = chapter.Theme == null ? null :  _chapterRepository.getThemeById(chapter.Theme.Id),
+                Date = chapter.Date
             };
             _chapterRepository.Add(newChapter);
             _chapterRepository.SaveChanges();
