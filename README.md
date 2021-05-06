@@ -22,6 +22,19 @@ dotnet run
 ```
 
 ### Printscreens Swagger
+* Chapters controller
+![](CH_algemeen.png)
 
+* Themes controller
+![](TH_algemeen.png)
+
+* Priorities controller (wordt niet gebruikt in de front end)
+![](PR_algemeen.png)
+
+* Algemene classendiagram
+![](Repositories.png)
+
+* Database diagram
+![](DB.png)
 
 
