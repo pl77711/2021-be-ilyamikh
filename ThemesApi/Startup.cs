@@ -23,16 +23,14 @@ namespace ThemesApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ThemeContext")));
-
             services.AddScoped<ApplicationDataInitializer>();
             services.AddScoped<IChapterRepository, ChapterRepository>();
             services.AddScoped<IPrioriteitRepository, PriorityRepository>();
             services.AddScoped<IThemeRepository, ThemeRepository>();
-
-
-
+           // services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
 
             // Register the Swagger services
             services.AddOpenApiDocument(c =>
@@ -42,17 +40,16 @@ namespace ThemesApi
                 c.Version = "v1";
                 c.Description = "The Theme API documentation description.";
             });
-            services.AddSwaggerDocument();
-
-            services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
-            services.AddControllersWithViews();
+            //services.AddSwaggerDocument();
 
             
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDataInitializer themeDataInitializer)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,12 +59,10 @@ namespace ThemesApi
 
             app.UseOpenApi();
             app.UseSwaggerUi3();
-            app.UseSwagger();
-
-            app.UseCors("AllowAllOrigins");
-
-
+            //app.UseSwagger();
             app.UseRouting();
+
+            //app.UseCors("AllowAllOrigins");
 
             app.UseAuthorization();
 
